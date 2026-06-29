@@ -4,9 +4,9 @@ import { Header } from "../components/Header";
 import checkmark from "../assets/icons/checkmark.png";
 import "./HomePage.css";
 
-export function HomePage() {
+export function HomePage({cart}) {
   const [products, setProducts] = useState([])
-  const [cart, setCart] = useState([])
+  
 
   useEffect(() => {
     axios.get('/api/products')
@@ -14,11 +14,8 @@ export function HomePage() {
       setProducts(response.data);
     });
 
-    // backend is running on localhost:3000, and we need to get data from backend to show on cart-items. so we're using this url:
-    axios.get('/api/cart-items')
-    .then((response)=>{
-      setCart(response.data);
-    })
+    
+   
 
   }, []);
 
